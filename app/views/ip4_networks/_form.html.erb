@@ -1,0 +1,29 @@
+<%= form_for(@ip4_network) do |f| %>
+  <% if @ip4_network.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ip4_network.errors.count, "error") %> prohibited this ip4_network from being saved:</h2>
+
+      <ul>
+      <% @ip4_network.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :desc %><br>
+    <%= f.text_area :desc %>
+  </div>
+  <div class="field">
+    <%= f.label :mask %><br>
+    <%= f.number_field :mask %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

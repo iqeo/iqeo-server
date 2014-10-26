@@ -1,0 +1,27 @@
+<h1>Listing ip4_addresses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Address</th>
+      <th>Ip4 network</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ip4_addresses.each do |ip4_address| %>
+      <tr>
+        <td><%= ip4_address.address %></td>
+        <td><%= ip4_address.ip4_network %></td>
+        <td><%= link_to 'Show', ip4_address %></td>
+        <td><%= link_to 'Edit', edit_ip4_address_path(ip4_address) %></td>
+        <td><%= link_to 'Destroy', ip4_address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ip4 address', new_ip4_address_path %>
