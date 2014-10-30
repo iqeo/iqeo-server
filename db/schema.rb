@@ -11,7 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024015712) do
+ActiveRecord::Schema.define(version: 20141027120500) do
+
+  create_table "active_admin_comments", force: true do |t|
+    t.string   "namespace"
+    t.text     "body"
+    t.string   "resource_id",   null: false
+    t.string   "resource_type", null: false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+
+  create_table "admin_users", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
+  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
   create_table "ip4_addresses", force: true do |t|
     t.integer  "address"
@@ -23,22 +56,23 @@ ActiveRecord::Schema.define(version: 20141024015712) do
   add_index "ip4_addresses", ["address"], name: "index_ip4_addresses_on_address", unique: true
   add_index "ip4_addresses", ["ip4_network_id"], name: "index_ip4_addresses_on_ip4_network_id"
 
-  create_table "ip4_addresses_locations", id: false, force: true do |t|
-    t.integer "ip4_address_id", null: false
-    t.integer "location_id",    null: false
-  end
-
-  add_index "ip4_addresses_locations", ["location_id", "ip4_address_id"], name: "ip4_address_location", unique: true
-
   create_table "ip4_networks", force: true do |t|
     t.string   "name"
     t.text     "desc"
+    t.integer  "address"
     t.integer  "mask"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "ip4_networks", ["name"], name: "index_ip4_networks_on_name"
+  add_index "ip4_networks", ["name", "address"], name: "index_ip4_networks_on_name_and_address"
+
+  create_table "ip4_networks_locations", id: false, force: true do |t|
+    t.integer "ip4_network_id", null: false
+    t.integer "location_id",    null: false
+  end
+
+  add_index "ip4_networks_locations", ["ip4_network_id", "location_id"], name: "ip4_network_location", unique: true
 
   create_table "locations", force: true do |t|
     t.string   "name"

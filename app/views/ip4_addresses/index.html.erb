@@ -13,7 +13,7 @@
     <% @ip4_addresses.each do |ip4_address| %>
       <tr>
         <td><%= ip4_address.address %></td>
-        <td><%= ip4_address.ip4_network %></td>
+        <td><%= ip4_address.ip4_network_id %></td>
         <td><%= link_to 'Show', ip4_address %></td>
         <td><%= link_to 'Edit', edit_ip4_address_path(ip4_address) %></td>
         <td><%= link_to 'Destroy', ip4_address, method: :delete, data: { confirm: 'Are you sure?' } %></td>

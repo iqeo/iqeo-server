@@ -38,8 +38,12 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'foundation-rails'
 gem 'simple_form'
+gem 'show_for', :github => 'plataformatec/show_for', :ref => '8156cf391ebe4b12d3900958e259b35981c9acda'
+gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'devise'
 
 group :development do
   gem 'rails_layout'
+  gem 'schema_to_scaffold'
 end
 

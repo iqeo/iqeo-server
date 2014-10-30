@@ -1,17 +1,9 @@
-
-<p>
-  <strong>Name:</strong>
-  <%= @location.name %>
-</p>
-
-<p>
-  <strong>Desc:</strong>
-  <%= @location.desc %>
-</p>
-
-<p>
-  <strong>Org:</strong>
-  <%= @location.org %>
-</p>
+<%= show_for @location do |s| %>
+  <%= s.attribute :name %>
+  <%= s.attribute :desc %>
+  <%= s.association :org %>
+  <%= s.association :ip4_networks %>
+<% end %>
 
 <%= link_to 'Edit', edit_location_path(@location) %> |
+<%= link_to 'Back', locations_path %>

@@ -1,7 +1,7 @@
-
-<p>
-  <strong>Name:</strong>
-  <%= @org.name %>
-</p>
+<%= show_for @org do |s| %>
+  <%= s.attribute :name %>
+  <%= s.association :locations %>
+<% end %>
 
 <%= link_to 'Edit', edit_org_path(@org) %> |
+<%= link_to 'Back', orgs_path %>

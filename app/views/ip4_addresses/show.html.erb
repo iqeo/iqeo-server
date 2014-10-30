@@ -1,12 +1,7 @@
-
-<p>
-  <strong>Address:</strong>
-  <%= @ip4_address.address %>
-</p>
-
-<p>
-  <strong>Ip4 network:</strong>
-  <%= @ip4_address.ip4_network %>
-</p>
+<%= show_for @ip4_address do |s| %>
+  <%= s.attribute :address %>
+  <%= s.attribute :ip4_network_id %>
+<% end %>
 
 <%= link_to 'Edit', edit_ip4_address_path(@ip4_address) %> |
+<%= link_to 'Back', ip4_addresses_path %>

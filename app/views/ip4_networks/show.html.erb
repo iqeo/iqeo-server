@@ -1,17 +1,11 @@
-
-<p>
-  <strong>Name:</strong>
-  <%= @ip4_network.name %>
-</p>
-
-<p>
-  <strong>Desc:</strong>
-  <%= @ip4_network.desc %>
-</p>
-
-<p>
-  <strong>Mask:</strong>
-  <%= @ip4_network.mask %>
-</p>
+<%= show_for @ip4_network do |s| %>
+  <%= s.attribute :name %>
+  <%= s.attribute :desc %>
+  <%= s.attribute :address %>
+  <%= s.attribute :mask %>
+  <%= s.association :locations %>
+  <%= s.association :ip4_addresses %>
+<% end %>
 
 <%= link_to 'Edit', edit_ip4_network_path(@ip4_network) %> |
+<%= link_to 'Back', ip4_networks_path %>
