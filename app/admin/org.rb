@@ -6,6 +6,7 @@ ActiveAdmin.register Org do
     attributes_table do
       row :id
       row :name
+      row :qtopic
       row :created_at
       row :updated_at
     end
