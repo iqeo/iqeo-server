@@ -30,5 +30,8 @@ module IqeoServer
     # For Foundation 5
     config.assets.precompile += %w( vendor/modernizr )
 
+    # prevent inherited_resources (actievadmin dependency) from changing the scaffold controller
+    config.app_generators.scaffold_controller = :scaffold_controller
+
   end
 end

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :agents
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :ip4_addresses
