@@ -4,7 +4,6 @@ class CreateLocations < ActiveRecord::Migration
       t.string :name
       t.text :desc
       t.references :org, index: true
-
       t.timestamps
     end
     add_index :locations, :name

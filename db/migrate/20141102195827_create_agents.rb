@@ -4,7 +4,7 @@ class CreateAgents < ActiveRecord::Migration
       t.string :name, index: true
       t.text :desc
       t.references :org, index: true
-      t.string :uuid
+      t.string :password_digest
       t.timestamps
     end
   end

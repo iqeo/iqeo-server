@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20141102195827) do
     t.string   "name"
     t.text     "desc"
     t.integer  "org_id"
-    t.string   "uuid"
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -4,10 +4,8 @@ class Agent < ActiveRecord::Base
 
   belongs_to :org
 
-  before_save :defaults
-
-  def defaults
-    self.uuid = SecureRandom.uuid if self.uuid.nil? || self.uuid.strip.empty?
+  def password= pass
+    self.password_digest = BCrypt::Password.create pass
   end
 
 end
