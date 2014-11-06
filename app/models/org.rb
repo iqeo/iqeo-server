@@ -9,5 +9,9 @@ class Org < ActiveRecord::Base
     self.qtopic = self.name.downcase.strip.gsub(/[ _]/, '-').gsub(/[^\w-]/, '') if self.qtopic.nil? || self.qtopic.strip.empty?
   end
 
+  def qpath
+    qtopic
+  end
+
 end
 

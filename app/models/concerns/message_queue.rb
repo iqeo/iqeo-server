@@ -13,8 +13,21 @@ module MessageQueue
     @@connection.close
   end
 
-  def create_exchange
-    @exchange = @@channel.topic "iqeo.#{qtopic}"
+  def topic
+    @topic ||= "iqeo.#{qpath}"
+  end
+
+  def exchange
+    @exchange ||= @@channel.topic topic
+  end
+
+  def queue
+    @queue ||= @@channel.queue(topic).bind(exchange, routing_key: topic) 
+  end
+
+  def send_command cmd
+    queue
+    exchange.publish cmd, routing_key: topic
   end
 
 end

@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20141102195827) do
     t.text     "desc"
     t.integer  "org_id"
     t.string   "password_digest"
+    t.string   "qtopic"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

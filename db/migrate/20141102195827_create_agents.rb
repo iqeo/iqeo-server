@@ -5,6 +5,7 @@ class CreateAgents < ActiveRecord::Migration
       t.text :desc
       t.references :org, index: true
       t.string :password_digest
+      t.string :qtopic
       t.timestamps
     end
   end
